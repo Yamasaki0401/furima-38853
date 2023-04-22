@@ -1,24 +1,59 @@
-# README
+# テー部設計
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+##　　usersテーブル
+|Column          |Type  |Options                  |
+|----------------|------|-------------------------|
+|nickname        |string|null: false              |
+|email           |string|null: false, unique: true|
+|password        |string|null: false              |
+|family_name     |string|null: false              |
+|last_name       |string|null: false              |
+|family_name_kana|string|null: false              |
+|last_name_kana  |string|null: false              |
+|birthday        |string|null: false              |
 
-Things you may want to cover:
+## Association
+has_many :items
+has_one :buy
+has_one :card
 
-* Ruby version
+## items
+|Column        |Type      |Options                        |
+|--------------|----------|-------------------------------|
+|item_name     |string    |null: false                    |
+|image         |string    |null: false                    |
+|price         |string    |null: false                    |
+|description   |string    |null: false                    |
+|condition     |string    |null: false                    |
+|category      |string    |null: false                    |
+|shopping_fee  |string    |null: false                    |
+|prefecture    |string    |null: false                    |
+|days          |string    |null: false                    |
+|user          |references|null: false, foreign_key: true |
 
-* System dependencies
+## Association
+has_one :user
 
-* Configuration
+## card
+|Column         |Type      |Options                       |
+|---------------|----------|------------------------------|
+|card_number    |string    |null: false                   |
+|expiration_date|string    |null: false                   |
+|security_code  |string    |null: false                   |
+|user           |references|null: false, foreign_key: true|
 
-* Database creation
+## Association
+belong_to :user
+## buyer
+|Column        |Type      |Options                       |
+|--------------|----------|------------------------------|
+|post_code     |string    |null: false                   |
+|prefecture    |string    |null: false                   |
+|city          |string    |null: false                   |
+|address       |text      |null: false                   |
+|building_name |text      |null: true                    |
+|phone_number  |string    |null: false                   |
+|user          |references|null: false, foreign_key: true|
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## Association
+belongs_to :user
