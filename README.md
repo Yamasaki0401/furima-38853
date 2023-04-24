@@ -22,7 +22,7 @@ has_many :orders
 |--------------------|----------|-------------------------------|
 |item_name           |string    |null: false                    |
 |price               |integer   |null: false                    |
-|description_id      |integer   |null: false                    |
+|description         |text      |null: false                    |
 |condition_id        |integer   |null: false                    |
 |category_id         |integer   |null: false                    |
 |shipping_fee_id     |integer   |null: false                    |
@@ -46,7 +46,7 @@ has_one :order
 |order         |references|null: false, foreign_key: true|
 
 ### Association
-has_many :order
+has_one :order
 
 ## orders
 |Column        |Type      |Options                       |
@@ -57,4 +57,4 @@ has_many :order
 ### Association
 belongs_to :user
 belongs_to :item
-belongs_to :address
+has_one :address
