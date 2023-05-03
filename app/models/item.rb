@@ -9,9 +9,9 @@ class Item < ApplicationRecord
 
   has_one_attached :image
 
-  validates :title, :text, presence: true
-  validates :genre_id, numericality: { other_than: 1 }
-  validates :genre_id, numericality: { other_than: 1 , message: "can't be blank"}
+  validates :image, :item_name, :price, :description, :condition, :category_id,
+            :shipping_fee_id, :shipping_schedule_id, :prefecture_id, presence: true
+  validates :condition_id, :category_id, :shipping_fee_id, :shipping_schedule_id, :prefecture_id, numericality: { other_than: 1 , message: "can't be blank"}
 
 
 end
