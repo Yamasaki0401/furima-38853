@@ -3,12 +3,10 @@ class OrdersController < ApplicationController
   before_action :move_to_index
 
   def index
-    @item = Item.find(params[:item_id])
     @order_form = OrderForm.new
   end
 
   def create
-    @item = Item.find(params[:item_id])
     @order_form = OrderForm.new(order_params)
     if @order_form.valid?
       pay_item
