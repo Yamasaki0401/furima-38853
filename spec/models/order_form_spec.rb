@@ -31,7 +31,7 @@ RSpec.describe OrderForm, type: :model do
         expect(@order_form.errors.full_messages).to include('Post code is invalid')
       end
       it 'prefectureを選択していないと保存できない' do
-        @order_form.prefecture_id = 0
+        @order_form.prefecture_id = 1
         @order_form.valid?
         expect(@order_form.errors.full_messages).to include('Prefecture must be other than 0')
       end

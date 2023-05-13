@@ -1,6 +1,6 @@
 window.addEventListener('load', () => {
   const inputPrice = document.getElementById("item-price");
-  inputPrice.addEventListener("change", () => {
+  inputPrice.addEventListener("keyup", () => {
     const inputVal = inputPrice.value;
     const taxPrice = document.getElementById("add-tax-price");
     const profitPrice = document.getElementById("profit");
@@ -11,3 +11,4 @@ window.addEventListener('load', () => {
     profitPrice.innerHTML = Math.floor(profit) ;
   });
 });
+
