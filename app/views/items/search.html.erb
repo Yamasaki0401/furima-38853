@@ -4,7 +4,7 @@
 <div class='item-contents' id="detailed-search-result-wrapper">
   
   <ul class='item-lists' id="detailed-search-result">
-      <%if @items.present?%>
+      <%if @items.present? %>
         <% @items.each do |item| %>
           <li class='list'>
             <%= link_to item_path(item.id), method: :get do %>
@@ -32,7 +32,7 @@
           </li>
         <% end %>
       <% else %>
-      <h3>該当する商品は見つかりませんでした</h3>
+        <h2>該当する商品はありませんでした</h2>
       <% end %>
   </ul>
 </div>
