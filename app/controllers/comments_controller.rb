@@ -3,7 +3,7 @@ class CommentsController < ApplicationController
     @item = Item.find(params[:item_id])
     @comment = Comment.new(comment_params)
     if @comment.save
-      redirect_to item_path(@item)
+      CommentChannel.broadcast_to @item, { comment: @comment, user: @comment.user }
     end
   end
 

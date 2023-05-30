@@ -79,9 +79,19 @@
     </div>
   </div>
   <%# /商品の概要 %>
+  <div id="comments">
+    <h4>＜コメント一覧＞</h4>
+    <% if @comments.present? %>
+      <% @item.comments.each do |comment| %>
+        <div class="comment">
+          <p class="user-info"><%= comment.user.nickname %>： </p>
+          <p><%= comment.text%></p>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
 
   <div class="comment-box">
-    <div id="comments">
     <% if user_signed_in? %>
       <%= form_with model: [@item, @comment], id: "comment-box" do |f|%>  
         <%=f.text_area :text, class: "comment-text"%>
@@ -93,17 +103,6 @@
         <%= f.submit "コメントをする", class: "comment-btn" %>
       <% end %>
     <% end %>
-
-    <h4>＜コメント一覧＞</h4>
-    <% if @comments.present? %>
-      <% @item.comments.each do |comment| %>
-        <div class="comment">
-          <p class="user-info"><%= comment.user.nickname %>： </p>
-          <p><%= comment.text%></p>
-        </div>
-      <% end %>
-    <% end %>
-    </div>
   </div>
   
   <div class="links">
