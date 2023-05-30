@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :comment do
-    text { 'MyText' }
+    text { 'aaaaaa' }
     user_id { 1 }
     item_id { 1 }
   end
