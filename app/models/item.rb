@@ -9,6 +9,7 @@ class Item < ApplicationRecord
 
   has_one_attached :image
   has_one :order
+  has_many :comments, dependent: :destroy
 
   validates :image, :item_name, :price, :description, :condition, :category_id,
             :shipping_fee_id, :shipping_schedule_id, :prefecture_id, presence: true
