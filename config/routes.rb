@@ -7,5 +7,6 @@ Rails.application.routes.draw do
     end
   
     resources :orders, only: [:index, :create]
+    resources :comments, only: :create
   end
 end
