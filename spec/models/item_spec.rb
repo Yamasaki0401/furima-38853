@@ -22,9 +22,20 @@ RSpec.describe Item, type: :model do
 
     context '商品登録ができない' do
       it 'imageが空だと登録できない' do
-        @item.image = nil
+        @item.images = nil
         @item.valid?
-        expect(@item.errors.full_messages).to include("Image can't be blank")
+        expect(@item.errors.full_messages).to include("Images can't be blank", 'Images is too short (minimum is 1 character)')
+      end
+
+      it 'imageは6枚以上登録できない' do
+        @item.images = [fixture_file_upload('public/images/test_image.jpg', 'test_image.jpg'),
+                        fixture_file_upload('public/images/test_image2.jpg', 'test_image2.jpg'),
+                        fixture_file_upload('public/images/test_image3.jpg', 'test_image3.jpg'),
+                        fixture_file_upload('public/images/test_image4.jpg', 'test_image4.jpg'),
+                        fixture_file_upload('public/images/test_image5.jpg', 'test_image5.jpg'),
+                        fixture_file_upload('public/images/test_image6.jpg', 'test_image6.jpg')]
+        @item.valid?
+        expect(@item.errors.full_messages).to include('Images is too long (maximum is 5 characters)')
       end
 
       it 'item_nameが空だと登録できない' do

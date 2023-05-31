@@ -148,6 +148,14 @@
   text-align: center;
 }
 
+.other-images {
+  display: flex;
+}
+
+.other-image {
+  margin-right: 10px;
+}
+
 .comment-text {
   width: 100%;
   height: 100px;
